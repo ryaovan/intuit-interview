@@ -1,0 +1,35 @@
+{
+  "extends": ["eslint:recommended", "airbnb-base"],
+  "rules": {
+    "max-len": ["error", { "code": 120 }],
+    "comma-dangle": 0,
+    "linebreak-style": 0,
+    "function-paren-newline": 0,
+    "arrow-parens": 0,
+    "no-console": 0,
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "import/extensions": [
+      0,
+      "ignorePackages",
+      {
+        "js": "always",
+        "jsx": "always"
+      }
+    ]
+  },
+  "globals": {
+    "test": true,
+    "describe": true,
+    "expect": true,
+    "beforeEach": true,
+    "afterEach": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "jsx": true
+    }
+  }
+}
