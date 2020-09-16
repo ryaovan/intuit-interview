@@ -1,7 +1,7 @@
 import initMongoose from './src/db/index.js';
 import app from './src/server.js';
 
-const { PORT = 3000 } = process.env;
+const { PORT = 4000 } = process.env;
 
 const setup = async () => {
   try {
@@ -9,7 +9,7 @@ const setup = async () => {
     console.log('init 3 sec buffer for mongoose connection');
     setTimeout(() => {
       app.listen(PORT, () => console.log(`Express running → PORT ${PORT}`));
-    }, 3000);
+    }, 4000);
   } catch (err) {
     console.error(`setup - ${err}`);
   }
