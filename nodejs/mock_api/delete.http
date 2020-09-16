@@ -1,2 +1,2 @@
-DELETE   http://localhost:3000/user?id=1 HTTP/1.1
+DELETE   http://localhost:3000/user?username="test@test.com" HTTP/1.1
 content-type: application/json

@@ -1,11 +1,12 @@
 /* eslint-disable no-use-before-define */
 import mongoose from 'mongoose';
-import { dbEnum, dbNameEnum } from '../constants/dbEnum';
+import { dbEnum, dbNameEnum } from '../constants/dbEnum.js';
 
 const { MONGO_URI = 'mongodb://mongo:27017' } = process.env;
 
 const reconnectTimeout = 5000;
 mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
 
 const connect = async () => {
   try {

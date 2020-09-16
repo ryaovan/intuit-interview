@@ -1,5 +1,5 @@
 import express from 'express';
-import userController from '../controllers/userController';
+import userController from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -9,9 +9,13 @@ router
     console.log(`'/user: get request ${JSON.stringify(req.query)}`);
 
     try {
-      const results = await userController.getUser(req.query);
+      let results;
+      if (req.query.all) results = await userController.getAll();
+      else results = await userController.get(req.query);
+
       res.json(results);
     } catch (err) {
+      console.error(err);
       res.status(400).send('bad request');
     }
   })
@@ -22,6 +26,7 @@ router
       await userController.put(req.body);
       res.end();
     } catch (err) {
+      console.error(err);
       res.status(400).send('bad request');
     }
   })
@@ -29,9 +34,10 @@ router
     console.log(`/user: post request ${JSON.stringify(req.body)}`);
 
     try {
-      await userController.create(req.body);
-      res.end();
+      const newID = await userController.create(req.body);
+      res.json({ id: newID });
     } catch (err) {
+      console.error(err);
       res.status(400).send('bad request');
     }
   })
@@ -41,8 +47,9 @@ router
     try {
       await userController.delete();
     } catch (err) {
+      console.error(err);
       res.status(400).send('bad request');
     }
-
-    res.end();
   });
+
+export default router;
